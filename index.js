@@ -31,6 +31,8 @@ app.use(express.json());
 app.use("/api/user", authRoute);
 app.use("/api/posts", postRoute);
 
-app.listen(process.env.PORT, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log("server running");
 });
