@@ -1,16 +1,24 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 // IMPORT ROUTES
 const authRoute = require("./routes/auth");
+
+dotenv.config();
+
+// CONNECT TO DB
 mongoose.connect(
-  "mongodb+srv://admin:passwordpassword@rest-fjpi5.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  process.env.DB_CONNECT,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("db connected");
   }
 );
+
+// Middleware
+app.use(express.json());
 
 // Route middlewares
 app.use("/api/user", authRoute);
