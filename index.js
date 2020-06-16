@@ -10,6 +10,10 @@ const postRoute = require("./routes/posts");
 
 dotenv.config();
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the API");
+});
+
 // CONNECT TO DB
 mongoose.connect(
   process.env.DB_CONNECT,
