@@ -10,7 +10,7 @@ router.get("/", privateRoute, async (req, res) => {
   //   });
   //   res.send(req.user);
   const user = await User.findById(req.user._id);
-  res.send(user);
+  res.json(user);
 });
 
 module.exports = router;
